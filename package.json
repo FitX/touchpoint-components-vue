@@ -1,0 +1,13 @@
+{
+    "name": "@touchpoint-components-vue/root",
+    "private": true,
+    "license": "UNLICENSED",
+    "workspaces": [
+      "packages/*"
+    ],
+    "devDependencies": {
+    },
+    "scripts": {
+    }
+  }
+  
