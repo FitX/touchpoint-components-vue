@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import AnimationSatellite from 'TPCpackages/AnimationSatellite/src/AnimationSatellite.vue';
+import AnimationSatellite from '../../AnimationSatellite/src/AnimationSatellite.vue';
 
 export default {
   name: 'AppRating',
