@@ -61,7 +61,7 @@ export default {
       // Runs 5 times, with values of step 0 through 4.
       this.components[count] = {
         index: (count + 1),
-        component: () => import(`TPCassets/icon-vote-${(count + 1)}.svg`),
+        component: () => import(`../../../assets/icon-vote-${(count + 1)}.svg`),
       };
     }
   },
@@ -77,7 +77,8 @@ export default {
 <style lang="scss" scoped>
   // @use currently only with dart-sass
   // @use '~@/assets/styles/mixins.scss' as mixin;
-  @import '~TPCstyles/mixins.scss';
+  @import '../../../assets/styles/mixins.scss';
+  // @import '~TPCstyles/mixins.scss';
 
   .rating {
     --voting-icon-count: 5;
