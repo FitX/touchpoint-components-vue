@@ -38,7 +38,15 @@ module.exports = {
     resolve: {
       alias: {
         'TPCpackages': path.resolve(__dirname, './packages/'),
+        'TPCassets': path.resolve(__dirname, './assets/'),
+        'TPCstyles': path.resolve(__dirname, './assets/styles/'),
       },
+      /* extensions: [
+        'vue',
+        'scss',
+        'svg',
+        'png'
+      ], */
     },
   },
 
@@ -50,12 +58,12 @@ module.exports = {
         return args;
       });
 
-    /* const svgRule = config.module.rule('svg');
+    const svgRule = config.module.rule('svg');
 
     svgRule.uses.clear();
 
     svgRule
       .use('vue-svg-loader')
-      .loader('vue-svg-loader'); */
+      .loader('vue-svg-loader');
   },
 };
