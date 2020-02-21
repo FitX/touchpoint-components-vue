@@ -1,7 +1,7 @@
 <template>
   <transition name="modal-fade">
     <div
-      v-show="isVisible"
+      v-show="showOverlay"
       class="overlay">
       <div
         role="dialog"
@@ -49,12 +49,14 @@
     },
     data() {
       return {
+        showOverlay: this.isVisible,
       };
     },
     created() {
     },
     methods: {
       close() {
+        this.showOverlay = false;
         this.$emit('close');
       },
     },
@@ -65,6 +67,7 @@
         } else {
           document.body.classList.remove('overlay-open');
         }
+        this.showOverlay = isOpen;
       },
     },
   };
