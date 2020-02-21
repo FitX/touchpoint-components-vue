@@ -1,7 +1,9 @@
 <template>
   <div
     class="rating">
-    <p class="rating__description">Wie zufrieden bist du mit diesem Display?</p>
+    <p
+      v-if="description"
+      class="rating__description">{{ description }}</p>
     <div
       v-if="components"
       :style="{ '--voting-icon-count' : numberOfVotings }"
@@ -48,6 +50,10 @@ export default {
       type: Number,
       default: 5,
     },
+    description: {
+      type: String,
+      default: null,
+    },
   },
   data() {
     return {
@@ -85,23 +91,18 @@ export default {
     --voting-font-size: var(--font-size-normal, 30px);
 
     display: grid;
+    grid-gap: 1em;
     align-items: center;
     font-size: var(--voting-font-size);
 
     @media (min-width: 600px) {
-      grid-template-columns: auto minmax(max-content, 25.625rem);
-      grid-template-columns: 1fr 25.625rem; // 410px
-      grid-gap: 1em;
+      grid-template-columns: auto 1fr;
     }
 
     &__buttons {
       display: grid;
-      grid-template-columns: repeat(var(--voting-icon-count), 1fr);
-      justify-content: space-between;
-    }
-
-    &__icon {
-      width: 3.625rem; // 50px
+      grid-template-columns: repeat(var(--voting-icon-count), 3.625rem); // 50px
+      grid-gap: 1em;
     }
   }
 
