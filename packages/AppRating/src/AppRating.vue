@@ -1,9 +1,7 @@
 <template>
   <div
     class="rating">
-    <p
-      v-if="description"
-      class="rating__description">{{ description }}</p>
+    <p class="rating__description">Wie zufrieden bist du mit diesem Display?</p>
     <div
       v-if="components"
       :style="{ '--voting-icon-count' : numberOfVotings }"
@@ -30,54 +28,72 @@
 </template>
 
 <script>
-import AnimationSatellite from '../../AnimationSatellite/src/AnimationSatellite.vue';
+  import AnimationSatellite from '../../AnimationSatellite/src/AnimationSatellite.vue';
 
-export default {
-  name: 'AppRating',
-  components: {
-    AnimationSatellite,
-  },
-  props: {
-    name: {
-      type: String,
-      default: null,
+  /**
+   * Filter Even Elements
+   * normally even numbers have the feature that number % 2 === 0;
+   * JavaScript is, however, zero-based, so want those elements with a modulo of 1:
+   */
+  const filterEvenElement = (array = []) => array.filter((item, index) => index % 2 === 0);
+
+  export default {
+    name: 'AppRating',
+    components: {
+      AnimationSatellite,
     },
-    isVoted: {
-      type: Boolean,
-      default: false,
+    props: {
+      name: {
+        type: String,
+        default: null,
+      },
+      isVoted: {
+        type: Boolean,
+        default: false,
+      },
+      numberOfVotings: {
+        type: Number,
+        default: 5,
+        validator: value => {
+          const acceptedValues = [2,3,5];
+          return acceptedValues.includes(value);
+        },
+      },
     },
-    numberOfVotings: {
-      type: Number,
-      default: 5,
-    },
-    description: {
-      type: String,
-      default: null,
-    },
-  },
-  data() {
-    return {
-      vote: null,
-      components: [],
-    };
-  },
-  created() {
-    for (let count = 0; count < this.numberOfVotings; count += 1) {
-      console.log('count', count);
-      // Runs 5 times, with values of step 0 through 4.
-      this.components[count] = {
-        index: (count + 1),
-        component: () => import(`../../../assets/icon-vote-${(count + 1)}.svg`),
+    data() {
+      return {
+        vote: null,
+        components: [],
       };
-    }
-  },
-  methods: {
-    saveVote(count) {
-      this.vote = count;
-      this.$emit('success', this.vote);
     },
-  },
-};
+    created() {
+      const components = [];
+      for (let count = 0; count < 5; count += 1) {
+        console.log('count', count);
+        // Runs 5 times, with values of step 0 through 4.
+        components[count] = {
+          index: (count + 1),
+          component: () => import(`../../../assets/icon-vote-${(count + 1)}.svg`),
+        };
+      }
+      if (this.numberOfVotings === 5) {
+        this.components = components;
+      } else if (this.numberOfVotings === 3) {
+        this.components = filterEvenElement(components);
+      } else {
+        const filtered = filterEvenElement(components);
+        // For only 2 votings, filter and remove middle
+        filtered.splice(1, 1);
+        this.components = filtered;
+      }
+    },
+    methods: {
+      saveVote(count) {
+        this.vote = count;
+        this.$emit('success', this.vote);
+      },
+    },
+  };
 </script>
 
 <style lang="scss" scoped>
@@ -101,8 +117,12 @@ export default {
 
     &__buttons {
       display: grid;
-      grid-template-columns: repeat(var(--voting-icon-count), 3.625rem); // 50px
+      grid-template-columns: repeat(var(--voting-icon-count), 3.625rem);
       grid-gap: 1em;
+    }
+
+    &__icon {
+      // width: 3.625rem; // 50px
     }
   }
 
