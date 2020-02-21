@@ -1,0 +1,25 @@
+{
+    "name": "app-overlay",
+    "version": "0.0.1",
+    "description": "Display Content in Overlay",
+    "author": "Michael Gerstmann @ FitX Digital",
+    "homepage": "https://github.com/fitx/touchpoint-components-vue/",
+    "license": "UNLICENSED",
+    "private": true,
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/fitx/touchpoint-components-vue.git",
+      "directory": "packages/AppOverlay"
+    },
+    "keywords": [
+      "fitx",
+      "studio",
+      "touchpoints"
+    ],
+    "main": "index.js",
+    "module": "index.js",
+    "dependencies": {
+    },
+    "devDependencies": {
+    }
+  }
