@@ -71,14 +71,10 @@
 </script>
 
 <style lang="scss">
-  @mixin app-overlay-styles() {
+  .overlay {
     --overlay-color-text: var(--overlay-color-text, #fff);
     --overlay-headline-size: var(--overlay-headline-size, 4rem);
     --overlay-close-size: var(--overlay-close-size, 50px);
-  }
-
-  .overlay {
-    @include app-overlay-styles();
   }
 
   .overlay-open {
@@ -97,8 +93,6 @@
   }
 
   .overlay {
-    @include app-overlay-styles();
-
     display: flex;
     justify-content: center;
     align-items: center;
