@@ -1,6 +1,7 @@
 <template>
   <transition name="modal-fade">
     <div
+      v-show="isVisible"
       class="overlay">
       <div
         role="dialog"
