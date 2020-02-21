@@ -118,7 +118,6 @@
 
   button {
     grid-area: close;
-    width: 4rem;
     background: none;
     border: 0;
     appearance: none;
