@@ -15,8 +15,8 @@
           @click="close"
           aria-label="Overlay schliessen">
           <svg
-            width="var(--overlay-close-size)"
-            height="var(--overlay-close-size)"
+            width="50"
+            height="50"
             xmlns="http://www.w3.org/2000/svg">
             <path
               d="M46.429 0L25 21.43 3.571 0 0 3.57 21.429 25 0 46.43 3.571 50 25 28.57 46.429 50 50 46.43 28.571 25 50 3.57z"
