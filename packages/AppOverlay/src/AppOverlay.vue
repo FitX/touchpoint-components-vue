@@ -8,11 +8,16 @@
         aria-labelledby="modalTitle"
         aria-describedby="modalDescription"
         class="overlay__inner">
-        <h1 id="modalTitle">{{ headline }}</h1>
+        <h1
+          class="overlay__headline"
+          id="modalTitle">{{ headline }}</h1>
         <button
           @click="close"
           aria-label="Overlay schliessen">
-          <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            width="var(--overlay-close-size)"
+            height="var(--overlay-close-size)"
+            xmlns="http://www.w3.org/2000/svg">
             <path
               d="M46.429 0L25 21.43 3.571 0 0 3.57 21.429 25 0 46.43 3.571 50 25 28.57 46.429 50 50 46.43 28.571 25 50 3.57z"
               fill="#FFF"
@@ -83,6 +88,8 @@
 
   .overlay {
     --overlay-color-text: var(--color-white, #fff);
+    --overlay-headline-size: var(--overlay-headline-size, 4rem);
+    --overlay-close-size: var(--overlay-close-size, 50px);
 
     display: flex;
     justify-content: center;
@@ -112,7 +119,7 @@
 
   h1, button {
     grid-area: headline;
-    font-size: 4rem;
+    font-size: var(--overlay-headline-size);
     font-weight: 400;
   }
 
