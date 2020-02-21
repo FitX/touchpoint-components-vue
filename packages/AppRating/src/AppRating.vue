@@ -1,7 +1,9 @@
 <template>
   <div
     class="rating">
-    <p class="rating__description">Wie zufrieden bist du mit diesem Display?</p>
+    <p
+      v-if="description"
+      class="rating__description">{{ description }}</p>
     <div
       v-if="components"
       :style="{ '--voting-icon-count' : numberOfVotings }"
@@ -50,6 +52,10 @@
       isVoted: {
         type: Boolean,
         default: false,
+      },
+      description: {
+        type: String,
+        default: null,
       },
       numberOfVotings: {
         type: Number,
