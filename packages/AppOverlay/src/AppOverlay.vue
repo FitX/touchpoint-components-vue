@@ -2,6 +2,7 @@
   <transition name="modal-fade">
     <div
       v-show="showOverlay"
+      :style="cssVars"
       class="overlay">
       <div
         role="dialog"
@@ -12,17 +13,10 @@
           class="overlay__headline"
           id="modalTitle">{{ headline }}</h1>
         <button
+          class="overlay__close"
           @click="close"
           aria-label="Overlay schliessen">
-          <svg
-            width="50"
-            height="50"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M46.429 0L25 21.43 3.571 0 0 3.57 21.429 25 0 46.43 3.571 50 25 28.57 46.429 50 50 46.43 28.571 25 50 3.57z"
-              fill="#FFF"
-              fill-rule="evenodd"/>
-          </svg>
+          <icon-close></icon-close>
         </button>
         <div
           id="modalDescription"
@@ -35,8 +29,13 @@
 </template>
 
 <script>
+  import IconClose from '../../../assets/icon-close.svg';
+
   export default {
     name: 'AppOverlay',
+    components: {
+      IconClose,
+    },
     props: {
       headline: {
         type: String,
@@ -46,13 +45,31 @@
         type: Boolean,
         default: false,
       },
+      additionalStyles: {
+        type: Object,
+        default: () => ({}),
+      },
     },
     data() {
       return {
         showOverlay: this.isVisible,
+        defaultStyles: {
+          '--overlay-color-text': '#fff',
+          '--overlay-color-background': '#1a1a1a',
+          '--overlay-headline-size': '4rem',
+          '--overlay-close-size': '50px',
+          '--overlay-border-radius': '1em',
+          '--overlay-padding': '1em',
+        },
       };
     },
-    created() {
+    computed: {
+      cssVars() {
+        return {
+          ...this.defaultStyles,
+          ...this.additionalStyles,
+        }
+      }
     },
     methods: {
       close() {
@@ -74,12 +91,6 @@
 </script>
 
 <style lang="scss">
-  .overlay {
-    --overlay-color-text: var(--overlay-color-text, #fff);
-    --overlay-headline-size: var(--overlay-headline-size, 4rem);
-    --overlay-close-size: var(--overlay-close-size, 50px);
-  }
-
   .overlay-open {
     overflow: hidden;
   }
@@ -112,27 +123,33 @@
       max-width: 1930px;
       display: grid;
       grid:
-        'headline close' auto
+        '. close' auto
+        'headline headline' auto
         'content content' auto
         / 1fr auto;
+      background: var(--overlay-color-background);
+      border-radius: var(--overlay-border-radius);
+      padding: var(--overlay-padding);
     }
 
     &__content {
       grid-area: content;
     }
-  }
 
-  h1, button {
-    grid-area: headline;
-    font-size: var(--overlay-headline-size);
-    font-weight: 400;
-  }
+    &__headline {
+      grid-area: headline;
+      font-size: var(--overlay-headline-size);
+      font-weight: 700;
+    }
 
-  button {
-    grid-area: close;
-    background: none;
-    border: 0;
-    appearance: none;
-    color: var(--overlay-color-text);
+    &__close {
+      grid-area: close;
+      background: none;
+      border: 0;
+      appearance: none;
+      color: var(--overlay-color-text);
+      align-self: start;
+      margin-bottom: 2em;
+    }
   }
 </style>
