@@ -16,7 +16,8 @@
           class="overlay__close"
           @click="close"
           aria-label="Overlay schliessen">
-          <icon-close></icon-close>
+          <icon-close
+            class="overlay__close-icon"></icon-close>
         </button>
         <div
           id="modalDescription"
@@ -150,6 +151,10 @@
       color: var(--overlay-color-text);
       align-self: start;
       margin-bottom: 2em;
+    }
+
+    &__close-icon {
+      width: var(--overlay-close-size);
     }
   }
 </style>
