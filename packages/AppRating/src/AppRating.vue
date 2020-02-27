@@ -144,18 +144,25 @@
     outline: none;
 
     &.animation {
-      --vote-color: var(--color-green);
-
       animation: icon-animation cubic-bezier(0.165, 0.840, 0.440, 1.000) 1.2s;
     }
 
-    &--1.animation {
-      --vote-color: var(--color-cherry);
+    &.animation,
+    &:focus {
+      --vote-color: var(--color-green);
+    }
+
+    &--1 {
+      &.animation,
+      &:focus {
+        --vote-color: var(--color-cherry);
+      }
     }
 
     &--2,
     &--3 {
-      &.animation {
+      &.animation,
+      &:focus {
         --vote-color: var(--color-curry);
       }
     }
