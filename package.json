@@ -1,10 +1,16 @@
 {
   "name": "touchpoint-components-vue",
   "version": "0.1.0",
-  "private": true,
   "license": "UNLICENSED",
   "workspaces": [
     "packages/*"
+  ],
+  "files": [
+    "dist/*",
+    "packages/*",
+    "public/*",
+    "*.json",
+    "*.js"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -15,8 +21,11 @@
   },
   "dependencies": {
     "core-js": "^3.6.4",
+    "highlight.js": "^9.18.1",
     "register-service-worker": "^1.6.2",
     "vue": "^2.6.11",
+    "vue-highlight.js": "^3.1.0",
+    "vue-prism-component": "^1.1.1",
     "vue-router": "^3.1.5",
     "vue-svg-loader": "^0.16.0"
   },
