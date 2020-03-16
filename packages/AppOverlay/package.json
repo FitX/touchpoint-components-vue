@@ -1,6 +1,6 @@
 {
     "name": "app-overlay",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Display Content in Overlay",
     "author": "Michael Gerstmann @ FitX Digital",
     "homepage": "https://github.com/fitx/touchpoint-components-vue/",
