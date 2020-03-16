@@ -75,7 +75,6 @@
     created() {
       const components = [];
       for (let count = 0; count < 5; count += 1) {
-        console.log('count', count);
         // Runs 5 times, with values of step 0 through 4.
         components[count] = {
           index: (count + 1),

@@ -69,8 +69,8 @@
         return {
           ...this.defaultStyles,
           ...this.additionalStyles,
-        }
-      }
+        };
+      },
     },
     methods: {
       close() {
