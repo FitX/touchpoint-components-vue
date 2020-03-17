@@ -1,6 +1,7 @@
 <template>
   <div
-    class="rating">
+    class="rating"
+    :style="cssVars">
     <p
       v-if="description"
       class="rating__description">{{ description }}</p>
@@ -65,12 +66,33 @@
           return acceptedValues.includes(value);
         },
       },
+      additionalStyles: {
+        type: Object,
+        default: () => ({}),
+      },
     },
     data() {
       return {
         vote: null,
         components: [],
+        defaultStyles: {
+          '--voting-icon-count': this.numberOfVotings,
+          '--voting-font-size': 'var(--font-size-normal, 30px)',
+          '--icon-size': '3.625rem', // 58px
+          '--vote-color': '#fff',
+          '--color-green': 'var(--color-green, #00BAA7)',
+          '--color-cherry': 'var(--color-cherry, #C33546)',
+          '--color-curry': 'var(--color-curry, #F5A323)',
+        },
       };
+    },
+    computed: {
+      cssVars() {
+        return {
+          ...this.defaultStyles,
+          ...this.additionalStyles,
+        };
+      },
     },
     created() {
       const components = [];
@@ -108,9 +130,6 @@
   // @import '~TPCstyles/mixins.scss';
 
   .rating {
-    --voting-icon-count: 5;
-    --voting-font-size: var(--font-size-normal, 30px);
-
     display: grid;
     grid-gap: 1em;
     align-items: center;
@@ -133,9 +152,6 @@
 
   .vote {
     @include btn-reset();
-
-    --icon-size: 3.625rem; // 58px
-    --vote-color: var(--color-white);
 
     position: relative;
     background: none;
