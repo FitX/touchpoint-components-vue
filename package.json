@@ -1,16 +1,9 @@
 {
   "name": "touchpoint-components-vue",
-  "version": "0.2.1",
+  "version": "0.3.1",
   "license": "UNLICENSED",
   "workspaces": [
     "packages/*"
-  ],
-  "files": [
-    "dist/*",
-    "packages/*",
-    "public/*",
-    "*.json",
-    "*.js"
   ],
   "scripts": {
     "serve": "vue-cli-service serve",
