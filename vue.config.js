@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 
 const PACKAGE_JSON = require('./package.json');
 
@@ -23,7 +23,7 @@ module.exports = {
 
   pages: {
     index: {
-      entry: './demo/src/main.js'
+      entry: './demo/src/main.js',
     },
   },
 
@@ -37,9 +37,9 @@ module.exports = {
   configureWebpack: {
     resolve: {
       alias: {
-        'TPCpackages': path.resolve(__dirname, './packages/'),
-        'TPCassets': path.resolve(__dirname, './assets/'),
-        'TPCstyles': path.resolve(__dirname, './assets/styles/'),
+        TPCpackages: path.resolve(__dirname, './packages/'),
+        TPCassets: path.resolve(__dirname, './assets/'),
+        TPCstyles: path.resolve(__dirname, './assets/styles/'),
       },
       /* extensions: [
         'vue',
