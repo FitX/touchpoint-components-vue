@@ -89,9 +89,6 @@
           '--voting-font-size': 'var(--font-size-normal, 30px)',
           '--icon-size': '3.625rem', // 58px
           '--vote-color': '#fff',
-          '--color-green': 'var(--color-green, #00BAA7)',
-          '--color-cherry': 'var(--color-cherry, #C33546)',
-          '--color-curry': 'var(--color-curry, #F5A323)',
         },
       };
     },
@@ -136,9 +133,14 @@
   // @use currently only with dart-sass
   // @use '~@/assets/styles/mixins.scss' as mixin;
   @import '../../../assets/styles/mixins.scss';
+  @import '../../../assets/styles/colors.scss';
   // @import '~TPCstyles/mixins.scss';
 
   .rating {
+    --color-green: var(--color-green, $color-green);
+    --color-cherry: var(--color-cherry, $color-cherry);
+    --color-curry: var(--color-curry, $color-curry);
+
     display: grid;
     grid-gap: 1em;
     align-items: center;
