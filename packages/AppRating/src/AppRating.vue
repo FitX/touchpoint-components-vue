@@ -1,6 +1,7 @@
 <template>
   <div
     class="rating"
+    :class="modifier ? `rating--${modifier}` : null"
     :style="cssVars">
     <p
       v-if="description"
@@ -63,6 +64,14 @@
         default: 5,
         validator: value => {
           const acceptedValues = [2,3,5];
+          return acceptedValues.includes(value);
+        },
+      },
+      modifier: {
+        type: String,
+        default: null,
+        validator: value => {
+          const acceptedValues = ['block'];
           return acceptedValues.includes(value);
         },
       },
@@ -137,6 +146,10 @@
 
     @media (min-width: 600px) {
       grid-template-columns: auto 1fr;
+    }
+
+    &--block {
+      grid-template-columns: 1fr;
     }
 
     &__buttons {
